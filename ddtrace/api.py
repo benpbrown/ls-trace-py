@@ -157,14 +157,14 @@ class API(object):
                 'Datadog-Meta-Lang-Interpreter': PYTHON_INTERPRETER,
                 'Datadog-Meta-Tracer-Version': ddtrace.__version__,
             })
-        # end bbrown hack
 
-        # Add container information if we have it
-        self._container_info = container.get_container_info()
-        if self._container_info and self._container_info.container_id:
-            self._headers.update({
-                'Datadog-Container-Id': self._container_info.container_id,
-            })
+            # Add container information if we have it
+            self._container_info = container.get_container_info()
+            if self._container_info and self._container_info.container_id:
+                self._headers.update({
+                    'Datadog-Container-Id': self._container_info.container_id,
+                })
+        # end bbrown hack
 
     def __str__(self):
         if self.uds_path:
