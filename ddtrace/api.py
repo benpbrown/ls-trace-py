@@ -149,12 +149,15 @@ class API(object):
         else:
             self._set_version('v0.3', encoder=encoder)
 
-        self._headers.update({
-            'Datadog-Meta-Lang': 'python',
-            'Datadog-Meta-Lang-Version': PYTHON_VERSION,
-            'Datadog-Meta-Lang-Interpreter': PYTHON_INTERPRETER,
-            'Datadog-Meta-Tracer-Version': ddtrace.__version__,
-        })
+        # bbrown hack
+        if False:
+            self._headers.update({
+                'Datadog-Meta-Lang': 'python',
+                'Datadog-Meta-Lang-Version': PYTHON_VERSION,
+                'Datadog-Meta-Lang-Interpreter': PYTHON_INTERPRETER,
+                'Datadog-Meta-Tracer-Version': ddtrace.__version__,
+            })
+        # end bbrown hack
 
         # Add container information if we have it
         self._container_info = container.get_container_info()
