@@ -150,6 +150,10 @@ class API(object):
             self._set_version('v0.3', encoder=encoder)
 
         # bbrown hack
+        self._headers.update({
+            'Datadog-Meta-Lang': 'python',
+        })
+        # bbrown hack
         if False:
             self._headers.update({
                 'Datadog-Meta-Lang': 'python',
